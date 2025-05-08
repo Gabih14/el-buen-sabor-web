@@ -51,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
   };
 
   return (
-    <header className="bg-orange-600 text-white shadow-lg sticky top-0 z-40">
+    <header className="bg-primary text-idtxt shadow-lg sticky top-0 z-40">
       <div className="container mx-auto px-4">
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col space-y-4 py-4">
@@ -145,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                     setIsLoginMode(true);
                     setIsAuthModalOpen(true);
                   }}
-                  className="hover:bg-orange-700 px-4 py-2 rounded-lg transition"
+                  className="hover:bg-LoginBtnHover px-4 py-2 rounded-lg transition"
                 >
                   Iniciar Sesión
                 </button>
@@ -154,7 +154,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                     setIsLoginMode(false);
                     setIsAuthModalOpen(true);
                   }}
-                  className="bg-white text-orange-600 px-4 py-2 rounded-lg hover:bg-orange-100 transition"
+                  className="bg-button text-white px-4 py-2 rounded-lg hover:bg-RegisterBtnHover transition"
                 >
                   Registrarse
                 </button>
@@ -220,14 +220,14 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
               </div>
               <button
                 type="submit"
-                className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
+                className="w-full bg-Btnsubmit text-white py-2 rounded-lg hover:bg-orange-700 transition"
               >
                 {isLoginMode ? 'Iniciar Sesión' : 'Registrarse'}
               </button>
               <button
                 type="button"
                 onClick={() => setIsLoginMode(!isLoginMode)}
-                className="w-full text-orange-600 hover:text-orange-700 transition"
+                className="w-full text-Textsubmit hover:text-orange-700 transition"
               >
                 {isLoginMode
                   ? '¿No tienes cuenta? Regístrate'
