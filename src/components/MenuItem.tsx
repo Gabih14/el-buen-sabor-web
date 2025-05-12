@@ -26,7 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
           <span className="text-xl font-bold text-orange-600">${item.price}</span>
           <button
             onClick={onAddToCart}
-            className="bg-AddToCart text-white p-2 rounded-full hover:bg-orange-700 transition"
+            className="bg-secondary text-white p-2 rounded-full hover:bg-orange-700 transition"
           >
             <Plus size={20} />
           </button>

@@ -111,8 +111,8 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between h-20">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-            <ChefHat size={36} />
-            <h1 className="text-2xl font-bold">El Buen Sabor</h1>
+            <ChefHat size={36} className="text-secondary" />
+            <h1 className="text-secondary text-2xl font-bold">El Buen Sabor</h1>
           </div>
 
           <div className="flex items-center space-x-6">
@@ -145,7 +145,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                     setIsLoginMode(true);
                     setIsAuthModalOpen(true);
                   }}
-                  className="hover:bg-LoginBtnHover px-4 py-2 rounded-lg transition"
+                  className=" text-secondary hover:bg-orange-700 px-4 py-2 rounded-lg transition"
                 >
                   Iniciar Sesión
                 </button>
@@ -154,7 +154,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                     setIsLoginMode(false);
                     setIsAuthModalOpen(true);
                   }}
-                  className="bg-button text-white px-4 py-2 rounded-lg hover:bg-RegisterBtnHover transition"
+                  className="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-RegisterBtnHover transition"
                 >
                   Registrarse
                 </button>
@@ -163,11 +163,11 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
 
             <button
               onClick={onCartClick}
-              className="relative p-2 hover:bg-orange-700 rounded-full transition"
+              className="text-secondary relative p-2 hover:bg-orange-700 rounded-full transition"
             >
               <ShoppingCart size={28} />
               {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className=" absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemCount}
                 </span>
               )}
@@ -220,14 +220,14 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
               </div>
               <button
                 type="submit"
-                className="w-full bg-Btnsubmit text-white py-2 rounded-lg hover:bg-orange-700 transition"
+                className="w-full bg-secondary text-white py-2 rounded-lg hover:bg-orange-700 transition"
               >
                 {isLoginMode ? 'Iniciar Sesión' : 'Registrarse'}
               </button>
               <button
                 type="button"
                 onClick={() => setIsLoginMode(!isLoginMode)}
-                className="w-full text-Textsubmit hover:text-orange-700 transition"
+                className="w-full text-secondary hover:text-orange-700 transition"
               >
                 {isLoginMode
                   ? '¿No tienes cuenta? Regístrate'
