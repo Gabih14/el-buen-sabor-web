@@ -20,7 +20,7 @@ const Home = () => {
             <p className="text-xl md:text-2xl mb-8">Descubre el auténtico sabor de la cocina latina</p>
             <button
               onClick={() => navigate('/menu')}
-              className="bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-700 transition transform hover:scale-105"
+              className="bg-secondary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-700 transition transform hover:scale-105"
             >
               Ver Menú
             </button>
@@ -34,21 +34,21 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
               <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Star className="text-orange-600" size={32} />
+                <Star className="text-secondary" size={32} />
               </div>
               <h3 className="text-xl font-semibold mb-4">Calidad Premium</h3>
               <p className="text-gray-600">Ingredientes frescos y seleccionados cuidadosamente para cada plato</p>
             </div>
             <div className="text-center">
               <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <ChefHat className="text-orange-600" size={32} />
+                <ChefHat className="text-secondary" size={32} />
               </div>
               <h3 className="text-xl font-semibold mb-4">Chefs Expertos</h3>
               <p className="text-gray-600">Nuestros chefs tienen años de experiencia en cocina internacional</p>
             </div>
             <div className="text-center">
               <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="text-orange-600" size={32} />
+                <Award className="text-secondary" size={32} />
               </div>
               <h3 className="text-xl font-semibold mb-4">Premiados</h3>
               <p className="text-gray-600">Reconocidos por la excelencia en servicio y calidad</p>
@@ -69,7 +69,7 @@ const Home = () => {
               </p>
               <button
                 onClick={() => navigate('/menu')}
-                className="bg-orange-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-700 transition"
+                className="bg-secondary text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-700 transition"
               >
                 Explorar Menú
               </button>
