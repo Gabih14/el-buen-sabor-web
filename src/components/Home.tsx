@@ -1,6 +1,5 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Clock, Award, ChefHat } from 'lucide-react';
+import { Star, Award, ChefHat } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
