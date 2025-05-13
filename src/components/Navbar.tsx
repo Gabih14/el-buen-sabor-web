@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { ChefHat, ShoppingCart, Search, User, LogOut, X } from 'lucide-react';
+import { ShoppingCart, Search, User, LogOut, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/Logo-banner.webp'
+import Icon from '../assets/Logo.webp'
 
 interface NavbarProps {
   cartItemCount: number;
@@ -22,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<UserProfile | null>(null);
 
@@ -52,16 +54,15 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
 
   return (
     <header className="bg-primary text-idtxt shadow-lg sticky top-0 z-40">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col space-y-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-              <ChefHat size={32} />
-              <h1 className="text-2xl font-bold">El Buen Sabor</h1>
+            <div className="flex items-center space-x-2 cursor-pointer pr-4" onClick={() => navigate('/')}>
+              <img src={Logo} alt="Logo" className='w-48' />
             </div>
-            
-            <div className="flex items-center space-x-4">
+
+            <div className="flex items-center">
               {isLoggedIn ? (
                 <button
                   onClick={() => setIsProfileModalOpen(true)}
@@ -78,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                   onClick={() => setIsAuthModalOpen(true)}
                   className="p-2 hover:bg-orange-700 rounded-full transition"
                 >
-                  <User size={24} />
+                  <User size={24} className='text-secondary' />
                 </button>
               )}
 
@@ -86,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                 onClick={onCartClick}
                 className="relative p-2 hover:bg-orange-700 rounded-full transition"
               >
-                <ShoppingCart size={24} />
+                <ShoppingCart size={24} className='text-secondary' />
                 {cartItemCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {cartItemCount}
@@ -109,10 +110,20 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden md:flex items-center justify-between h-20">
+        <div className="hidden md:flex items-center justify-between h-20 gap-4 p-0 lg:p-6">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-            <ChefHat size={36} className="text-secondary" />
-            <h1 className="text-secondary text-2xl font-bold">El Buen Sabor</h1>
+            {/* Icono para pantallas de 1024px */}
+            <img
+              src={Icon}
+              alt="Icon"
+              className="w-full h-14 lg:hidden" // Visible en pantallas menores a 1024px
+            />
+            {/* Logo para pantallas mayores a 1024px */}
+            <img
+              src={Logo}
+              alt="Logo"
+              className="hidden lg:block w-40 h-auto sm:w-40 md:w-48 lg:w-64" // Visible en pantallas mayores a 1024px
+            />
           </div>
 
           <div className="flex items-center space-x-6">
@@ -251,7 +262,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                 <X size={24} />
               </button>
             </div>
-            
+
             <div className="flex items-center space-x-4 mb-6">
               <img
                 src={user?.avatar}
