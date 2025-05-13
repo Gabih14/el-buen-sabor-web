@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChefHat, ShoppingCart, Search, User, LogOut, X } from 'lucide-react';
+import { ShoppingCart, Search, User, LogOut, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo-banner.webp'
 import Icon from '../assets/Logo.webp'
@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                   onClick={() => setIsAuthModalOpen(true)}
                   className="p-2 hover:bg-orange-700 rounded-full transition"
                 >
-                  <User size={24} />
+                  <User size={24} className='text-secondary' />
                 </button>
               )}
 
@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
                 onClick={onCartClick}
                 className="relative p-2 hover:bg-orange-700 rounded-full transition"
               >
-                <ShoppingCart size={24} />
+                <ShoppingCart size={24} className='text-secondary' />
                 {cartItemCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {cartItemCount}
