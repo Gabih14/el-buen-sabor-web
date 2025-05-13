@@ -14,7 +14,7 @@ const Home = () => {
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white px-4">
+          <div className="text-center text-primary px-4">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">El Buen Sabor</h1>
             <p className="text-xl md:text-2xl mb-8">Descubre el auténtico sabor de la cocina latina</p>
             <button

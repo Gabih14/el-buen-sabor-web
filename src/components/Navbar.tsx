@@ -58,11 +58,11 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col space-y-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="flex items-center space-x-2 cursor-pointer pr-4" onClick={() => navigate('/')}>
               <img src={Logo} alt="Logo" className='w-48' />
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center">
               {isLoggedIn ? (
                 <button
                   onClick={() => setIsProfileModalOpen(true)}
