@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Home from './components/Home';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState<Array<{ id: number; name: string; price: number; quantity: number }>>([]);
@@ -34,6 +35,9 @@ function App() {
         items={cart}
         setCart={setCart}
       />
+
+         <Footer />
+
     </div>
   );
 }
