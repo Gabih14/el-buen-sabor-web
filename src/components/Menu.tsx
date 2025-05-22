@@ -35,68 +35,74 @@ const Menu = () => {
   ];
 
   const [selectedCategory, setSelectedCategory] = React.useState("Todas");
+  const filteredItems = selectedCategory === "Todas"
+    ? regularItems
+    : regularItems.filter(item => item.category === selectedCategory);
 
-  const filteredItems = selectedCategory === "Todas" ? regularItems : regularItems.filter(item => item.category === selectedCategory);
-
-return (
-  <div className="flex px-6 py-12 gap-6">
-    {/* Categories Section */}
-    <Categorias selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
-
-    {/* Contenido principal: ofertas + menú */}
+  return (
+    <div className="flex flex-row gap-4 px-4 sm:px-6 lg:px-12 py-10">
+      {/* Categorías (lateral o superior) */}
+      {/* Contenido principal */}
     <div className="flex-1">
-    {/* Special Offers Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Ofertas Especiales</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {specialOffers.map(item => (
-            <div key={item.id} className="bg-orange-50 rounded-xl p-6 transform transition hover:scale-105">
-              <div className="flex flex-col md:flex-row gap-6">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full md:w-48 h-48 object-cover rounded-lg"
-                />
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2">{item.name}</h3>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-3xl font-bold text-orange-600">${item.price}</span>
-                    <button className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">
-                      Ordenar
-                    </button>
+        {/* Ofertas Especiales */}
+        <section className="mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">Ofertas Especiales</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {specialOffers.map(item => (
+              <div key={item.id} className="bg-orange-50 rounded-xl p-4 sm:p-6 transition-transform hover:scale-105">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full sm:w-48 h-48 object-cover rounded-lg"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
+                    <p className="text-gray-600 mb-4">{item.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-2xl font-bold text-orange-600">${item.price}</span>
+                      <button className="bg-secondary text-white px-4 py-2 rounded-full hover:bg-orange-700 transition">
+                        Ordenar
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-   {/* Regular Menu Section */}
-      <section>
-        <h2 className="text-3xl font-bold text-center mb-12">Nuestro Menú</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filteredItems.map(item => (
-             <motion.div
-          key={item.id}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <MenuItem item={item} onAddToCart={() => {}} />
-        </motion.div>
-          ))}
-           </AnimatePresence>
-        </div>
-      </section>
+        {/* Menú regular */}
+        <section>
+
+          <div className="p-4">
+          
+            <Categorias onSelect={(category) => setSelectedCategory(category)} />
+
+            <h2 className="text-xl font-bold mt-4">Mostrando: {selectedCategory}</h2>
+      
+          {/* Aquí podrías filtrar los productos según selectedCategory */}
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Nuestro Menú</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence>
+              {filteredItems.map(item => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <MenuItem item={item} onAddToCart={() => {}} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
-);
+  );
 };
-
-
 
 export default Menu;

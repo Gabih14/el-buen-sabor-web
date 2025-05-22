@@ -36,7 +36,7 @@ function App() {
         setCart={setCart}
       />
 
-         <Footer />
+      <Footer />
 
     </div>
   );
