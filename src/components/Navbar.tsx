@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartItemCount, onCartClick, onSearchCha
 
   return (
     <header className="bg-primary text-idtxt shadow-lg sticky top-0 z-40">
-      <div className="mx-auto px-4">
+      <div className="w-full bg-[#DCC7B0] shadow-md sticky top-0 z-50 px-4">
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col space-y-4 py-4">
           <div className="flex items-center justify-between">

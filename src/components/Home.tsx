@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Star, Award, ChefHat } from 'lucide-react';
 
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -75,7 +76,7 @@ const Home = () => {
             </div>
             <div className="flex-1">
               <img 
-                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1200"
+                src="https://muchosnegociosrentables.com/wp-content/uploads/2017/09/Co%CC%81mo-montar-una-cantina-italiana_opt.jpg"
                 alt="Restaurant interior"
                 className="rounded-lg shadow-xl"
               />
@@ -83,6 +84,12 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      {/* Footer Section */}
+      <div>
+     
+      </div>
+
     </div>
   );
 };
