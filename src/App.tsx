@@ -6,13 +6,17 @@ import Profile from './components/Profile';
 import Home from './components/Home';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
+import { useCartStore } from './store/cartStore'; // Importa el store
+
 
 function App() {
-  const [cart, setCart] = useState<Array<{ id: number; name: string; price: number; quantity: number }>>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  // Obtén el contador de productos del carrito global
+  const cartItemCount = useCartStore(state =>
+    state.items.reduce((total, item) => total + item.quantity, 0)
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -32,8 +36,6 @@ function App() {
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
-        items={cart}
-        setCart={setCart}
       />
 
          <Footer />

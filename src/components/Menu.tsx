@@ -1,9 +1,9 @@
-import React from 'react';
 import MenuItem from './MenuItem';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Categorias } from './Categorias';
+import { useCartStore } from '../store/cartStore'; // Importa el store
 
 const Menu = () => {
+  const addToCart = useCartStore(state => state.addToCart); // Obtiene la función
+
   const specialOffers = [
     {
       id: 5,
@@ -62,7 +62,10 @@ return (
                   <p className="text-gray-600 mb-4">{item.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-3xl font-bold text-orange-600">${item.price}</span>
-                    <button className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">
+                    <button
+                      className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-700 transition"
+                      onClick={() => addToCart({ id: item.id, name: item.name, price: item.price, quantity: 1 })}
+                    >
                       Ordenar
                     </button>
                   </div>
@@ -76,18 +79,13 @@ return (
    {/* Regular Menu Section */}
       <section>
         <h2 className="text-3xl font-bold text-center mb-12">Nuestro Menú</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filteredItems.map(item => (
-             <motion.div
-          key={item.id}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <MenuItem item={item} onAddToCart={() => {}} />
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {regularItems.map(item => (
+            <MenuItem
+              key={item.id}
+              item={item}
+              onAddToCart={() => addToCart({ id: item.id, name: item.name, price: item.price, quantity: 1 })}
+            />
           ))}
            </AnimatePresence>
         </div>
