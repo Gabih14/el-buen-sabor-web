@@ -24,15 +24,28 @@ const Menu = () => {
   ];
 
   const regularItems = [
-    { id: 1, name: "Paella Valenciana", price: 24.99, image: "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&q=80&w=500", description: "Arroz, mariscos, pollo y verduras" },
-    { id: 2, name: "Tacos al Pastor", price: 12.99, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&q=80&w=500", description: "Tortillas de maíz con cerdo marinado y piña" },
-    { id: 3, name: "Lomo Saltado", price: 18.99, image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=500", description: "Carne de res salteada con verduras" },
-    { id: 4, name: "Ceviche", price: 16.99, image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?auto=format&fit=crop&q=80&w=500", description: "Pescado fresco marinado en limón" }
+    { id: 1, name: "Paella Valenciana", price: 24.99, image: "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&q=80&w=500", description: "Arroz, mariscos, pollo y verduras", category:"Guisos" },
+    { id: 2, name: "Tacos al Pastor", price: 12.99, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&q=80&w=500", description: "Tortillas de maíz con cerdo marinado y piña", category:"Tacos" },
+    { id: 3, name: "Lomo Saltado", price: 18.99, image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=500", description: "Carne de res salteada con verduras", category:"Lomo" },
+    { id: 4, name: "Ceviche", price: 16.99, image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?auto=format&fit=crop&q=80&w=500", description: "Pescado fresco marinado en limón", category:"Guisos" },
+    { id: 5, name: "Spaghetti Bolognese", price: 17.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRQb4z2wCheG9m7ccS1WtiKEgsUthWVvf0Ww&s", description: "Pasta con salsa de carne",category:"Pastas" },
+    { id: 6, name: "Calzone", price: 15.99, image: "https://whiskedawaykitchen.com/wp-content/uploads/2024/08/italian-sausage-calzone-11.jpg", description:" Masa rellena de jamón, queso y champiñones", category:"Empanadas" },
+    { id: 7, name: "Pizza Margarita", price: 14.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7RbPLpeQGEKr-JMLB6L9kRdCTMtUbFJfJw&s", description: "Pizza con tomate, mozzarella y albahaca", category:"Pizzas"},
+    { id: 8, name: "Lasaña", price: 19.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRjCnEj8ga3_zb4XhCuNyXm9oke8Q2ZDSGQA&s", description: "Capas de pasta con salsa de carne y queso parmesano rayado", category:"Pastas" },
   ];
 
-  return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Special Offers Section */}
+  const [selectedCategory, setSelectedCategory] = React.useState("Todas");
+
+  const filteredItems = selectedCategory === "Todas" ? regularItems : regularItems.filter(item => item.category === selectedCategory);
+
+return (
+  <div className="flex px-6 py-12 gap-6">
+    {/* Categories Section */}
+    <Categorias selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
+
+    {/* Contenido principal: ofertas + menú */}
+    <div className="flex-1">
+    {/* Special Offers Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-8">Ofertas Especiales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -63,7 +76,7 @@ const Menu = () => {
         </div>
       </section>
 
-      {/* Regular Menu Section */}
+   {/* Regular Menu Section */}
       <section>
         <h2 className="text-3xl font-bold text-center mb-12">Nuestro Menú</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -74,10 +87,14 @@ const Menu = () => {
               onAddToCart={() => addToCart({ id: item.id, name: item.name, price: item.price, quantity: 1 })}
             />
           ))}
+           </AnimatePresence>
         </div>
       </section>
     </div>
-  );
+  </div>
+);
 };
+
+
 
 export default Menu;

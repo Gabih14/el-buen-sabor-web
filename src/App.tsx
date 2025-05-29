@@ -5,7 +5,9 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Home from './components/Home';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 import { useCartStore } from './store/cartStore'; // Importa el store
+
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -35,6 +37,9 @@ function App() {
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
       />
+
+         <Footer />
+
     </div>
   );
 }
