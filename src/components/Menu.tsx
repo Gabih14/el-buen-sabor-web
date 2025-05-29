@@ -1,7 +1,9 @@
-import React from 'react';
 import MenuItem from './MenuItem';
+import { useCartStore } from '../store/cartStore'; // Importa el store
 
 const Menu = () => {
+  const addToCart = useCartStore(state => state.addToCart); // Obtiene la función
+
   const specialOffers = [
     {
       id: 5,
@@ -47,7 +49,10 @@ const Menu = () => {
                   <p className="text-gray-600 mb-4">{item.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-3xl font-bold text-orange-600">${item.price}</span>
-                    <button className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">
+                    <button
+                      className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-700 transition"
+                      onClick={() => addToCart({ id: item.id, name: item.name, price: item.price, quantity: 1 })}
+                    >
                       Ordenar
                     </button>
                   </div>
@@ -63,7 +68,11 @@ const Menu = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Nuestro Menú</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {regularItems.map(item => (
-            <MenuItem key={item.id} item={item} onAddToCart={() => {}} />
+            <MenuItem
+              key={item.id}
+              item={item}
+              onAddToCart={() => addToCart({ id: item.id, name: item.name, price: item.price, quantity: 1 })}
+            />
           ))}
         </div>
       </section>

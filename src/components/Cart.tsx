@@ -1,35 +1,17 @@
 import React from 'react';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { useCartStore } from '../store/cartStore';
 
 interface CartProps {
   isOpen: boolean;
   onClose: () => void;
-  items: Array<{
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-  }>;
-  setCart: React.Dispatch<React.SetStateAction<Array<{
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-  }>>>;
 }
 
-const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, setCart }) => {
-  const updateQuantity = (id: number, change: number) => {
-    setCart(currentCart =>
-      currentCart.map(item =>
-        item.id === id
-          ? { ...item, quantity: Math.max(0, item.quantity + change) }
-          : item
-      ).filter(item => item.quantity > 0)
-    );
-  };
-
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
+  const items = useCartStore(state => state.items);
+  const updateQuantity = useCartStore(state => state.updateQuantity);
+  const clearCart = useCartStore(state => state.clearCart);
+  const total = useCartStore(state => state.totalPrice());
 
   if (!isOpen) return null;
 
@@ -66,14 +48,14 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, setCart }) => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <button
-                        onClick={() => updateQuantity(item.id, -1)}
+                        onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                         className="p-1 hover:bg-gray-100 rounded-full"
                       >
                         <Minus size={16} />
                       </button>
                       <span>{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.id, 1)}
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         className="p-1 hover:bg-gray-100 rounded-full"
                       >
                         <Plus size={16} />
@@ -91,7 +73,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, items, setCart }) => {
                 <button
                   onClick={() => {
                     alert('¡Gracias por tu pedido!');
-                    setCart([]);
+                    clearCart();
                     onClose();
                   }}
                   className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition"
