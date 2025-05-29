@@ -31,7 +31,7 @@ const Menu = () => {
     { id: 5, name: "Spaghetti Bolognese", price: 17.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRQb4z2wCheG9m7ccS1WtiKEgsUthWVvf0Ww&s", description: "Pasta con salsa de carne",category:"Pastas" },
     { id: 6, name: "Calzone", price: 15.99, image: "https://whiskedawaykitchen.com/wp-content/uploads/2024/08/italian-sausage-calzone-11.jpg", description:" Masa rellena de jamón, queso y champiñones", category:"Empanadas" },
     { id: 7, name: "Pizza Margarita", price: 14.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7RbPLpeQGEKr-JMLB6L9kRdCTMtUbFJfJw&s", description: "Pizza con tomate, mozzarella y albahaca", category:"Pizzas"},
-    { id: 8, name: "Lasaña", price: 19.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRjCnEj8ga3_zb4XhCuNyXm9oke8Q2ZDSGQA&s", description: "Capas de pasta con salsa de carne y queso parmesano rayado", category:"Pastas" },
+    { id: 8, name: "Lasaña", price: 19.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRjCnEj8ga3_zb4XhCuNyXm9oke8Q2ZDSGQA&s", description: "Capas de pasta con salsa,carne y queso parmesano rayado", category:"Pastas" },
   ];
 
   const [selectedCategory, setSelectedCategory] = React.useState("Todas");
@@ -81,7 +81,7 @@ const Menu = () => {
 
             <h2 className="text-xl font-bold mt-4">Mostrando: {selectedCategory}</h2>
       
-          {/* Aquí podrías filtrar los productos según selectedCategory */}
+          
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Nuestro Menú</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -93,6 +93,7 @@ const Menu = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
+                  className="rounded-xl p-4 sm:p-6 transition-transform hover:scale-105"
                 >
                   <MenuItem item={item} onAddToCart={() => {}} />
                 </motion.div>

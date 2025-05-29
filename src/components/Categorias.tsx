@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 const categories = [
+  'Todas',	
   'Pizzas',
   'Empanadas',
   'Pastas',

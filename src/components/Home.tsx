@@ -30,7 +30,12 @@ const Home = () => {
 
       {/* Features Section */}
       <div className="bg-white py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-center">
+
+          <h2 className='text-4xl font-bold text-gray-800 mb-4'>¿Que es El Buen Sabor?</h2>
+
+          <p className ='text-lg text-gray-600 mb-12'>  Años de experiencia y pasión por lo que amamos hacer </p>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
               <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -57,8 +62,66 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Menu Section */}
+     <div className="bg-orange-50 py-20">
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-4xl font-bold text-gray-800 mb-4">
+      Ofertas Especiales
+    </h2>
+    <p className="text-lg text-gray-600 mb-12">
+      Descubre nuestras delicias con precios irresistibles
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      {/* Oferta 1 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbDuurubohEEK1lD_LxVX5EuJ4BhhKjhWZdw&s"
+          alt="Menu Especial"
+          className="w-full h-48 object-cover rounded-xl mb-4"
+        />
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">Menu Especial</h3>
+        <p className="text-gray-600 mb-2">Antes: $12.000</p>
+        <p className="text-orange-600 font-bold text-lg">Ahora: $9.500</p>
+      </div>
+
+      {/* Oferta 2 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEHyWlsE3hOZsGh6hMFWXg4uiIgLHB5JxFwQ&s"
+          alt="Oferta del Dia"
+          className="w-full h-48 object-cover rounded-xl mb-4"
+        />
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">Oferta del Dia</h3>
+        <p className="text-gray-600 mb-2">Antes: $10.000</p>
+        <p className="text-orange-600 font-bold text-lg">Ahora: $7.800</p>
+      </div>
+
+      {/* Oferta 3 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6">
+        <img
+          src="https://tofuu.getjusto.com/orioneat-local/resized2/g69HbuK9WHjfBNa5g-2400-x.webp"
+          alt="Combo Familiar"
+          className="w-full h-48 object-cover rounded-xl mb-4"
+        />
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">Combo Familiar</h3>
+        <p className="text-gray-600 mb-2">Antes: $20.000</p>
+        <p className="text-orange-600 font-bold text-lg">Ahora: $16.500</p>
+      </div>
+    </div>
+
+    <button 
+    onClick={() => navigate('/menu')} 
+    className="bg-orange-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300">
+      
+      Ver Menú Completo
+    </button>
+  </div>
+</div>
+
+
       {/* About Section */}
-      <div className="bg-orange-50 py-20">
+      <div className="bg-white-50 py-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
@@ -84,12 +147,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
-      {/* Footer Section */}
-      <div>
-     
-      </div>
-
     </div>
   );
 };

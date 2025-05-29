@@ -39,6 +39,31 @@ const Footer = () => {
       <div className="text-center text-gray-500 mt-8 text-sm">
         © {new Date().getFullYear()} El Buen Sabor. Todos los derechos reservados.
       </div>
+
+       {/* Mapa */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">Ubicación</h4>
+          <div className="rounded-lg overflow-hidden border border-gray-700">
+            <iframe 
+            title="Ubicación de El Buen Sabor"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0865012362876!2d-122.4206795846814!3d37.77851917975898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808cd3f4a5df%3A0x4290aa0c0b062515!2sSan+Francisco%2C+CA!5e0!3m2!1ses-419!2sus!4v1616144538481!5m2!1ses-419!2sus" 
+            width="100%"
+            height="180"
+            style={{border: 0}}
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
     </footer>
   );
 };
