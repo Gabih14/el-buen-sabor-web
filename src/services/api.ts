@@ -1,50 +1,5 @@
 // Mock API service to simulate fetching data
-export interface UnidadMedida {
-  id: number;
-  denominacion: string;
-  categoriaId: number;
-  unidadMedida: string;
-  precioCompra: number;
-  stockActual: number;
-}
-
-export interface Detalle {
-  tipo: string;
-  cantidad: number;
-  item: UnidadMedida;
-}
-
-export interface Subcategoria {
-  id: number;
-  denominacion: string;
-  esInsumo: boolean;
-  subcategorias: Subcategoria[];
-  sucursals: any[];
-}
-
-export interface Categoria {
-  id: number;
-  denominacion: string;
-  esInsumo: boolean;
-  subcategorias: Subcategoria[];
-  sucursals: any[];
-}
-
-export interface Producto {
-  id: number;
-  denominacion: string;
-  categoriaId: number;
-  categoria: {
-    id: number;
-    denominacion: string;
-  };
-  imagenes: string[];
-  precioVenta: number;
-  descripcion: string;
-  tiempoEstimadoMinutos: number;
-  preparacion: string;
-  detalles: Detalle[];
-}
+import { Producto, Categoria, Subcategoria } from '../types/index';
 
 
 export const apiService = {
